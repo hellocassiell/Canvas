@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="600px" height="800px" style="border:1px solid black;"></canvas>
+	</body>
+	<script>
+		var myc = document.getElementById("myCanvas");
+		var c = myc.getContext("2d");
+		draw(c);
+
+		function draw(c) {
+
+			c.save();
+			c.translate(160, 0);
+			jiwei(c);
+			jiyi(c);
+			jishen(c);
+			setNum(c);
+
+			c.restore();
+		}
+		
+		//机尾
+		function jiwei(c) {
+			c.beginPath();
+			c.moveTo(103, 370);
+			c.lineTo(0, 420);
+			c.lineTo(1, 440);
+			c.lineTo(114, 420);
+			c.moveTo(126, 420);
+			c.lineTo(239, 440);
+			c.lineTo(240, 420);
+			c.lineTo(137, 370);
+			c.lineWidth = 1.5;
+			c.strokeStyle = "#C62A5B";
+			c.stroke();
+			c.fillStyle = "pink";
+			c.fill();
+		}
+
+		//机翼
+		function jiyi(c) {
+			c.beginPath();
+			c.moveTo(100, 140);
+			c.lineTo(92, 155);
+			c.lineTo(-120, 210);
+			c.lineTo(-128, 254);
+			c.lineTo(-123, 254);
+			c.lineTo(-117, 245);
+			c.lineTo(50, 217);
+			c.lineTo(99, 220);
+			c.lineTo(99, 353);
+			c.lineTo(119, 445);
+			c.lineTo(121, 445);
+			c.lineTo(141, 353);
+			c.lineTo(141, 220);
+			c.lineTo(190, 217);
+			c.lineTo(357, 245);
+			c.lineTo(363, 254);
+			c.lineTo(368, 254);
+			c.lineTo(360, 210);
+			c.lineTo(148, 155);
+			c.lineTo(140, 140);
+			c.closePath();
+			c.lineWidth = 2;
+			c.strokeStyle = "#006FEA";
+			c.stroke();
+			c.fillStyle = "#8ABFF5";
+			c.fill();
+
+			c.fillStyle = "gray";
+			c.fillRect(0, 213, 14, 36);
+			c.fillRect(40, 203, 14, 36);
+			c.fillRect(185, 203, 14, 36);
+			c.fillRect(225, 213, 14, 36);
+		}
+
+		//机身
+		function jishen(c) {
+			c.beginPath();
+			c.moveTo(100, 80);
+			c.quadraticCurveTo(120, -10, 140, 80);
+			c.lineTo(140, 310);
+			c.quadraticCurveTo(120, 420, 100, 310);
+			c.closePath();
+			c.lineWidth = 1;
+			c.strokeStyle = "gray";
+			c.stroke();
+			c.fillStyle = "#F15A75";
+			c.fill();
+
+		}
+
+		//学号
+		function setNum(c) {
+			c.font = "20px impact";
+			c.textAlign = 'center';
+			c.fillStyle = "black";
+			c.fillText('0154003', 370, 650);
+		}
+	</script>
+
+</html>
