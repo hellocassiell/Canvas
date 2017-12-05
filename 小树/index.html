@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="myc" width="400" height="600" style="border:1px solid;"></canvas>
+
+		<script>
+			var cc = document.getElementById("myc");
+			var mc = cc.getContext("2d");
+			var gravel = new Image();
+			gravel.src = "img/gravel.jpg";
+			gravel.onload = function() {
+				draw(mc);
+			}
+
+			function draw(mc) {
+				mc.save();
+				mc.translate(-170, 0);
+				drawText(mc);
+				mc.restore();
+				mc.save();
+				mc.translate(100, 200);
+				drawTree(mc);
+				mc.restore();
+				mc.save();
+				mc.translate(300, 400);
+				mc.scale(2, 2);
+				drawTree(mc);
+				mc.restore();
+				mc.save();
+				mc.translate(-60, 0);
+				drawLine(mc);
+				mc.restore();
+			}
+
+			function drawText(mc) {
+				mc.font = "60px impact";
+				mc.textalign = "center";
+				mc.fillStyle = "pink";
+				mc.fillText("Happy Trails!", 200, 60, 400);
+			}
+
+			function createTree(mc) {
+				mc.beginPath();
+				mc.moveTo(0, 3);
+				mc.lineTo(27, 3);
+				mc.lineTo(10, -15);
+				mc.lineTo(20, -15);
+				mc.lineTo(7, -30);
+				mc.lineTo(17, -30);
+				mc.lineTo(0, -52);
+				mc.lineTo(-17, -30);
+				mc.lineTo(-7, -30);
+				mc.lineTo(-20, -15);
+				mc.lineTo(-10, -15);
+				mc.lineTo(-27, 3);
+				mc.closePath();
+			}
+
+			function drawTree(mc) {
+				var bark = new Image();
+				bark.src = "img/bark.jpg";
+				mc.save();
+				mc.transform(1.1, 0, -0.5, 1, 11, 17);
+				mc.scale(1, 0.6);
+				createTree(mc);
+				mc.fillStyle = 'rgba(0, 0, 0, 0.2)';
+				mc.fillRect(-3, 3, 10, 40);
+				mc.fill();
+				mc.restore();
+				createTree(mc);
+				mc.fillStyle = "green";
+				mc.fill();
+				mc.lineWidth = 2;
+				mc.lineJoin = "round";
+				mc.strokeStyle = "#996600";
+				mc.stroke();
+
+				var t = mc.createLinearGradient(-5, -50, 5, -50);
+				t.addColorStop(0, '#663300');
+				t.addColorStop(0.4, '#996600');
+				t.addColorStop(1, '#552200');
+				mc.fillStyle = t;
+				mc.fillRect(-5, 4, 9, 40);
+
+			}
+
+			function drawLine(mc) {
+				mc.beginPath();
+				mc.moveTo(58, 317);
+				mc.bezierCurveTo(331, 327, 271, 55, 478, 87);
+				mc.lineWidth = 20;
+				mc.strokeStyle = mc.createPattern(gravel, "repeat");
+				mc.stroke();
+				mc.closePath();
+
+			}
+		</script>
+	</body>
+
+</html>
